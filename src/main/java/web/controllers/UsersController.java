@@ -22,26 +22,26 @@ public class UsersController {
     }
 
     @GetMapping()
-    public String getAllUsers(ModelMap model) {
+    public String index(ModelMap model) {
         model.addAttribute("users", userService.getUsers());
         System.out.println(userService.getUsers());
         return "users/users";
     }
 
     @GetMapping("/{id}")
-    public String getUser(@PathVariable("id") long id, ModelMap model) {
+    public String showUser(@PathVariable("id") long id, ModelMap model) {
         System.out.println(id);
         model.addAttribute("user", userService.getUser(id));
         return "users/user";
     }
 
     @GetMapping("/newUser")
-    public String getAddUser(@ModelAttribute("user") User user) {
+    public String newUser(@ModelAttribute("user") User user) {
         return "users/newUser";
     }
 
     @PostMapping("/")
-    public String addUser(@ModelAttribute("user") @Valid User user, BindingResult bindingResult) {
+    public String createUser(@ModelAttribute("user") @Valid User user, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return "users/newUser";
         }
