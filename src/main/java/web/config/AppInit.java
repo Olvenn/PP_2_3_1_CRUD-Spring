@@ -18,14 +18,14 @@ public class AppInit extends AbstractAnnotationConfigDispatcherServletInitialize
     @Override
     protected Class<?>[] getRootConfigClasses() {
         return new Class[]{
-                SpringConfig.class
+                WebConfig.class
         };
     }
 
     @Override
     protected Class<?>[] getServletConfigClasses() {
 
-        return new Class[]{SpringConfig.class};
+        return new Class[]{WebConfig.class};
     }
 
     @Override
