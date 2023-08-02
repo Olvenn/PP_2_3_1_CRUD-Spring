@@ -22,7 +22,7 @@ public class UsersController {
     }
 
     @GetMapping()
-    public String index(ModelMap model) {
+    public String getUsers(ModelMap model) {
         model.addAttribute("users", userService.getUsers());
         System.out.println(userService.getUsers());
         return "users/users";
@@ -36,7 +36,7 @@ public class UsersController {
     }
 
     @GetMapping("/newUser")
-    public String newUser(@ModelAttribute("user") User user) {
+    public String showAddUserForm(@ModelAttribute("user") User user) {
         return "users/newUser";
     }
 
@@ -50,7 +50,7 @@ public class UsersController {
     }
 
     @GetMapping("/{id}/edit")
-    public String editUser(Model model, @PathVariable("id") long id) {
+    public String showUpdateUserForm(Model model, @PathVariable("id") long id) {
         model.addAttribute("user", userService.getUser(id));
         return "users/editUser";
     }
